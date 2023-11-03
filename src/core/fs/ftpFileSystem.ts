@@ -68,6 +68,7 @@ export default class FTPFileSystem extends RemoteFileSystem {
   }
 
   toFileEntry(fullPath, stat): FileEntry {
+    stat.name =  Buffer.from(stat.name, 'binary').toString('utf8')
     return {
       fspath: fullPath,
       name: stat.name,
